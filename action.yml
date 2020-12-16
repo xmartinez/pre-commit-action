@@ -1,6 +1,10 @@
 name: pre-commit
 description: run pre-commit and optionally commit back to the pull request
 inputs:
+  config:
+    description: path to config file
+    required: false
+    default: '.pre-commit-config.yaml'
   extra_args:
     description: options to pass to pre-commit run
     required: false

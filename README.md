@@ -48,6 +48,8 @@ the files (use the template above except for the `pre-commit` action):
         extra_args: flake8 --all-files
 ```
 
+TODO: Document `config` option.
+
 ### using this action in private repositories
 
 this action also provides an additional behaviour when used in private
