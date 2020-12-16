@@ -38,10 +38,12 @@ async function main() {
         await exec.exec('pip', ['freeze', '--local']);
     });
 
+    const configPath = core.getInput('config');
     const args = [
         'run',
         '--show-diff-on-failure',
         '--color=always',
+        `--config=${configPath}`,
         ...tr.argStringToArray(core.getInput('extra_args')),
     ];
     const token = core.getInput('token');
@@ -50,7 +52,7 @@ async function main() {
 
     const cachePaths = [path.join(os.homedir(), '.cache', 'pre-commit')];
     const py = getPythonVersion();
-    const cacheKey = `pre-commit-2-${hashString(py)}-${hashFile('.pre-commit-config.yaml')}`;
+    const cacheKey = `pre-commit-2-${hashString(py)}-${hashFile(configPath)}`;
     const restored = await cache.restoreCache(cachePaths, cacheKey);
     const ret = await exec.exec('pre-commit', args, {ignoreReturnCode: push});
     if (!restored) {
