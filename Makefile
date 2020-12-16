@@ -3,7 +3,7 @@ all: dist/index.js
 
 venv: Makefile
 	rm -rf venv
-	virtualenv venv -ppython3
+	python3 -m venv venv
 	venv/bin/pip install markdown-to-presentation
 
 node_modules: package.json
