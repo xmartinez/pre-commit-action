@@ -38,6 +38,7 @@ async function main() {
         await exec.exec('pip', ['freeze', '--local']);
     });
 
+    // TODO: Log configPath?
     const configPath = core.getInput('config');
     const args = [
         'run',
